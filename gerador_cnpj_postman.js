@@ -1,37 +1,20 @@
-function gera_random(n)
-{
-    var ranNum = Math.round(Math.random()*n);
-    return ranNum;
-}
-
-// Função para retornar o resto da divisao entre números (mod)
-function mod(dividendo,divisor)
-{
-          return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
-}
 // Função que gera números de CNPJ válidos
-function cnpj()
-{
-          var n = 9;
-          var n1  = gera_random(n);
-           var n2  = gera_random(n);
-           var n3  = gera_random(n);
-           var n4  = gera_random(n);
-           var n5  = gera_random(n);
-           var n6  = gera_random(n);
-           var n7  = gera_random(n);
-           var n8  = gera_random(n);
-           var n9  = 0;//gera_random(n);
-           var n10 = 0;//gera_random(n);
-           var n11 = 0;//gera_random(n);
-           var n12 = 1;//gera_random(n);
-          var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
-           d1 = 11 - ( mod(d1,11) );
-           if (d1>=10) d1 = 0;
-           var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
-           d2 = 11 - ( mod(d2,11) );
-           if (d2>=10) d2 = 0;
-           return ''+n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+n11+n12+d1+d2;
+function cnpj() {
+
+    const rnd = (n) => Math.round(Math.random() * n);
+    const mod = (base, div) => Math.round(base - Math.floor(base / div) * div);
+
+    const weight = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5, 6];
+    const numbers = Array(8).fill('').map(() => rnd(9)) // Gera array com 8 números aleatórios
+        .concat([0, 0, 0, 1]); // Concatena 0001 ao array
+
+    let dac1 = 11 - (mod(numbers.reduce((total, number, index) => (total + (number * (weight[weight.length - index - 2]))), 0), 11));
+    numbers.push(dac1 >= 10 ? 0 : dac1);
+
+    let dac2 = 11 - mod(numbers.reduce((total, number, index) => (total + (number * (weight[weight.length - index - 1]))), 0), 11)
+    numbers.push(dac2 >= 10 ? 0 : dac2);
+
+    return `${numbers.join('')}`;
 }
 
 // opicional para postman
