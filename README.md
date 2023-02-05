@@ -2,6 +2,6 @@
 
 Criei esse script para gerar CNPJ randômicos para test de API no Postman.
 
-Adicione esse script na aba *Pre-request Script* e adicione a variável `{{CNPJ}}`na sua request.
+Adicione esse script na aba *Pre-request Script* e adicione a variável `{{CNPJ}}`no seu request.
 
-Sempre que você chamar o Postman vai chamar o seu script antes de enviar a request gerando um novo CNPJ em toda request.
+Sempre que você realzar um request o irá executar o script antes de enviar o request, gerando um novo CNPJ em todo request.
