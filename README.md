@@ -16,4 +16,8 @@ A cada solicitação que você fizer, o script será executado antes de enviar a
 - Este script gera números de CNPJ aleatórios e não representa números de CNPJ reais.
 - Certifique-se de que o endpoint da API aceita CNPJs gerados aleatoriamente para fins de teste.
 
+## Licença
+
+Este script é fornecido sob a [Licença MIT](https://opensource.org/licenses/MIT). Você pode usar, modificar e distribuir este script desde que mantenha a referência ao autor original.
+
 Sinta-se à vontade para personalizar o script de acordo com suas necessidades específicas.
